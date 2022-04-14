@@ -1,0 +1,17 @@
+aws_region = "ap-south-1"
+vpc_name = "ot247"
+instance_tenancy = "default"
+vpc_cidr_blocks = "10.0.0.0/16"
+enable_dns_support = true
+enable_dns_hostnames = true
+log_destination_type = "s3"
+traffic_type = "ALL"
+per_hour_partition = false
+log_destination = "arn:aws:s3:::opensearch-snashot"
+file_format_type = "parquet"
+subnet_name = "subnets"
+public_ip = false
+AZs = ["ap-south-1a", "ap-south-1b", "ap-south-1c"]
+private_subnet_cidr = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
+public_subnet_cidr = ["10.0.4.0/24", "10.0.5.0/24", "10.0.6.0/24"]
+route_cidr = "0.0.0.0/0"
