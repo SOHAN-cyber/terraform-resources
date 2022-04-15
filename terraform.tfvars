@@ -1,5 +1,5 @@
 aws_region = "ap-south-1"
-vpc_name = "ot247"
+name = "ot247"
 instance_tenancy = "default"
 vpc_cidr_blocks = "10.0.0.0/16"
 enable_dns_support = true

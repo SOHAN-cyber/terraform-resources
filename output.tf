@@ -49,7 +49,7 @@ output "Security_group_ssh" {
 }
 
 
-# output "subnet_id" {
-#   description = "Output the subnet id for subnet"
-#   value = aws_subnet.subnet.*.id
-# }
+output "subnet_ids" {
+  description = "Output the subnet id for subnet"
+  value = aws_subnet.subnet.*.id
+}

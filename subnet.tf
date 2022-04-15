@@ -21,14 +21,14 @@ resource "aws_subnet" "private-subnet" {
     }
 }
 
-# resource "aws_subnet" "subnet" {
-#     vpc_id = aws_vpc.main.id
-#     count = length(var.subnet_cidr)
-#     cidr_block = element(var.subnet_cidr, count.index % length(var.subnet_cidr))
-#     availability_zone = element(var.AZs, count.index % length(var.AZs))
-#     map_public_ip_on_launch =  var.public_ip
+resource "aws_subnet" "subnet" {
+    vpc_id = aws_vpc.main.id
+    count = length(var.subnet_cidr)
+    cidr_block = element(var.subnet_cidr, count.index % length(var.subnet_cidr))
+    availability_zone = element(var.AZs, count.index % length(var.AZs))
+    map_public_ip_on_launch =  var.public_ip
     
-#     tags = {
-#         Name = format("%s-subnet-%d", var.name,count.index+1)
-#     }
-# }
+    tags = {
+        Name = format("%s-subnet-%d", var.name,count.index+10)
+    }
+}

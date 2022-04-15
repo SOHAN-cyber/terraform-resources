@@ -244,6 +244,6 @@ variable "instance_public_ip" {
 
 variable "subnet_cidr" {
   description = "Subnet that you want to create"
-  type = list(string)
-  default = [ "10.0.11.0/24", "10.0.12.0/24", "10.0.13.0/24", "10.0.14.0/24", "10.0.15.0/24", "10.0.16.0/24" ]
+  type = list
+  default = ["10.0.11.0/24", "10.0.12.0/24", "10.0.13.0/24", "10.0.14.0/24", "10.0.15.0/24", "10.0.16.0/24"]
 }

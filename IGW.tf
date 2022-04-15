@@ -4,3 +4,4 @@ resource "aws_internet_gateway" "aws_internet_gateway" {
     "Name" = format("%s-igw", var.name)
     }
 }
+
