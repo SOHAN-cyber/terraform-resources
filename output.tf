@@ -8,15 +8,15 @@ output "vpc-flow-log-id" {
   value = aws_flow_log.main.id
 }
 
-output "public-subnet-id" {
-  description = "public-subnet-id"
-  value = aws_subnet.public_subnet.*.id
-}
+# output "public-subnet-id" {
+#   description = "public-subnet-id"
+#   value = aws_subnet.public_subnet.*.id
+# }
 
-output "private-subnet-id" {
-  description = "private-subnet-id"
-  value = aws_subnet.private-subnet.*.id
-}
+# output "private-subnet-id" {
+#   description = "private-subnet-id"
+#   value = aws_subnet.private-subnet.*.id
+# }
 
 output "EIP" {
   description = "Elasitc ip address"
@@ -49,7 +49,17 @@ output "Security_group_ssh" {
 }
 
 
-# output "subnet_id" {
-#   description = "Output the subnet id for subnet"
-#   value = aws_subnet.subnet.*.id
-# }
+output "subnet_id" {
+  description = "Output the subnet id for subnet"
+  value = aws_subnet.subnet.*.id
+}
+
+output "public-rt" {
+  description = "Attached public subnet"
+  value = aws_route_table.public-route1.id
+}
+
+output "private-rt" {
+  description = "Attached private subnet"
+  value = aws_route_table.private-route1.id
+}

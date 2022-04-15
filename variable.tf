@@ -247,3 +247,15 @@ variable "subnet_cidr" {
   type = list(string)
   default = [ "10.0.11.0/24", "10.0.12.0/24", "10.0.13.0/24", "10.0.14.0/24", "10.0.15.0/24", "10.0.16.0/24" ]
 }
+
+variable "public_subnet_count" {
+  description = "Public subnet"
+  type = number
+  default = 3
+}
+
+variable "private_subnet_count" {
+  description = "Private subnet"
+  type = number
+  default = 3
+}
