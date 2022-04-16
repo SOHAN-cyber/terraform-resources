@@ -1,7 +1,115 @@
-variable "name" {
+variable "vpc_name" {
   description = "vpc-name"
+  type = map
+  default = {
+    "Name" = "ot247-vpc"
+  }
+}
+
+variable "flow_logs" {
+  type = bool
+  default = false
+}
+
+variable "subnet_tag" {
+  description = "subnet tags"
+  type = map
+  default = {
+    Name = "ot247-subnet"
+    }
+}
+
+variable "name" {
   type = string
-  default = "ot247"
+  default = "ot-247"
+}
+variable "flow_log_name" {
+  description = "Vpc flow Name"
+  type = string
+  default = "vpc-flow-ot247"
+}
+
+variable "nat_gate_name" {
+  description = "Nat Gateway Name"
+  type = map
+  default = {
+    Name = "ot247-nat"
+    }
+}
+
+variable "vpc_eip" {
+  description = "EIP Name"
+  type = string
+  default = "ot247-eip"
+}
+
+variable "private_subnet_tag" {
+  description = "Tag for subnet"
+  type = map
+  default = {
+    "Name" = "ot247-private-rt1"
+  }
+}
+
+variable "sg1_name" {
+  description = "SG1"
+  type = map
+  default = {
+    "Name" = "SG1-OT247"
+  }
+}
+
+variable "var_subnet_id_nat" {
+  description = "Subnet in which you want to create nat gateway"
+  type = number
+  default = 1
+}
+
+variable "enable_vpc_flow_logs" {
+  description = "Do you want to enable vpc flow logs"
+  type = bool
+  default = false
+}
+
+variable "nat_gateway_subnet" {
+  description = "Where you want to create nat_gateway "
+  type = number
+  default = 1
+}
+
+variable "igw_name" {
+  description = "Name for the internet"
+  type = string
+  default = "ot247-igw"
+}
+variable "public_subnet_tag" {
+  description = "Tag for subnet"
+  type = map
+  default = {
+    "Name" = "ot247-private-rt1"
+  }
+}
+
+variable "port_number" {
+  description = "Port range you want to open"
+  type = list(number)
+  default = [80, 443]
+}
+
+variable "tags" {
+  description = "Name of the tag"
+  type = map
+  default = {
+    "Name" = "NEW-VPC"
+  }
+}
+
+variable "vpc_tags" {
+  description =  "vpc tags"
+  type = map
+  default = {
+    "Name" = "vpc"
+  }
 }
 
 variable "aws_region" {
@@ -39,6 +147,12 @@ variable "log_destination_type" {
   default = "s3"
 }
 
+variable "log_destination" {
+  description = "S3 Log bucket destination"
+  type = string
+  default = "arn:aws:s3:::opensearch-snashot"
+}
+
 variable "traffic_type" {
   description = "Type of traffic you want to store in vpc logs"
   type = string
@@ -54,12 +168,6 @@ variable "per_hour_partition" {
   description = "Do you want to store 1 hour logs as parition"
   type = bool
   default = true
-}
-
-variable "log_destination" {
-  description = "vpc flows data you want to store where"
-  type = string
-  default = "arn:aws:s3:::opensearch-snashot"
 }
 
 variable "subnet_name" {
@@ -108,12 +216,6 @@ variable "private_subnet_cidr" {
   description = "Private subnet cidr"
   type = list(string)
   default = ["10.0.4.0/24", "10.0.5.0/24", "10.0.6.0/24"]
-}
-
-variable "port_number" {
-  description = "Port which need to be open"
-  type = list(string)
-  default = ["80", "443", "22"]
 }
 
 variable "description" {
@@ -218,10 +320,32 @@ variable "cidr_block" {
   default = "0.0.0.0/0"
 }
 
-variable "whitelist_ips" {
+variable "ingress_whitelist_ip_addr" {
+  description = "ingress_whitelist ip address list"
+  type = map
+  default = {
+  1 = "10.76.2.3/32"
+  2 = "123.4.5.4/32"
+  3 = "23.43.22.2/32"
+  }
+  }
+
+variable "egress_whitelist_ip_addr" {
   description = "whitelist ip address list"
-  type = list(string)
-  default = [ "10.76.2.3/32", "123.4.5.4/32", "23.43.22.2/32" ]
+  type = map
+  default = {
+  1 = "10.76.2.3/32"
+  2 = "123.4.5.4/32"
+  3 = "23.43.22.2/32"
+  }
+  }
+
+variable "sg2_name" {
+  description = "Security group 2"
+  type = map
+  default = {
+    "Name" = "SSH-SG"
+  }
 }
 
 variable "protocol_type" {

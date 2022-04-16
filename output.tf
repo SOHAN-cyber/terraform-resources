@@ -5,18 +5,8 @@ output "vpc_id" {
 
 output "vpc-flow-log-id" {
   description = "vpc-flow-logs-id"
-  value = aws_flow_log.main.id
+  value = aws_flow_log.main.*.id
 }
-
-# output "public-subnet-id" {
-#   description = "public-subnet-id"
-#   value = aws_subnet.public_subnet.*.id
-# }
-
-# output "private-subnet-id" {
-#   description = "private-subnet-id"
-#   value = aws_subnet.private-subnet.*.id
-# }
 
 output "EIP" {
   description = "Elasitc ip address"
@@ -37,17 +27,6 @@ output "nacl_id" {
   description = "NACL ID"
   value = aws_network_acl.my_acl.id
 }
-
-output "Security_group_instance" {
-  description = "Security group for instances"
-  value = aws_security_group.SG1.id
-}
-
-output "Security_group_ssh" {
-  description = "Security group for ssh"
-  value = aws_security_group.ssh_sg.id
-}
-
 
 output "subnet_id" {
   description = "Output the subnet id for subnet"
