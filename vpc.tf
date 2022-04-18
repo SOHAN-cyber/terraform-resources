@@ -8,9 +8,7 @@ resource "aws_vpc" "main" {
    tags = merge(
     { "Name" = var.vpc_name
      },
-     var.tags,
-    var.vpc_name,
-    
+     var.tags
   )
 }
 
@@ -24,7 +22,9 @@ resource "aws_flow_log" "main" {
     file_format = var.file_format_type
     per_hour_partition = var.per_hour_partition
   }
-  tags = {
+  tags = merge({
     "Name" = var.flow_logs
-  }
+  },
+var.tags
+  )
 }

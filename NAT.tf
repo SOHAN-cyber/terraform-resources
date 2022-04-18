@@ -1,9 +1,11 @@
 resource "aws_eip" "my_eip" {
   vpc = true
 
-  tags = {
-    "Name" = format("%s", var.vpc_eip)
-  }
+  tags = merge ({
+    "Name" =  var.vpc_eip
+  },
+var.tags
+  )
 }
 
 resource "aws_nat_gateway" "my-nat" {
@@ -13,7 +15,6 @@ resource "aws_nat_gateway" "my-nat" {
   tags = merge ({
     "Name" =  var.nat_gate_name
   },
-var.tags,
-var.nat_gate_name
+var.tags
   )
 }

@@ -1,8 +1,11 @@
 resource "aws_network_acl" "my_acl" {
   vpc_id = aws_vpc.main.id
-  tags = {
-    Name = format("%s-nacl", var.name)
-  }
+  
+   tags = merge ({
+    Name = var.name
+  },
+  var.tags
+  )
 }
 
 resource "aws_network_acl_rule" "network_acl_egress_rule" {

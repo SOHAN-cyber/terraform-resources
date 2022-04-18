@@ -100,7 +100,7 @@ variable "tags" {
   description = "Name of the tag"
   type = map
   default = {
-    "Name" = "NEW-VPC"
+    "Name" = "ot247"
   }
 }
 

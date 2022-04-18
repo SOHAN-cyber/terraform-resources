@@ -7,7 +7,8 @@ resource "aws_route_table" "private-route1" {
   tags = merge({
        "Name" =  var.name
      },
-   var.private_subnet_tag
+   var.private_subnet_tag,
+   var.tags
   )
 }
 
@@ -26,7 +27,8 @@ resource "aws_route_table" "public-route1" {
   tags = merge({
        "Name" =  var.name
      },
-   var.public_subnet_tag
+   var.public_subnet_tag,
+   var.tags
   )
 }
 
