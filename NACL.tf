@@ -1,11 +1,11 @@
 resource "aws_network_acl" "my_acl" {
   vpc_id = aws_vpc.main.id
-  
-   tags = merge ({
+
+  tags = merge({
     Name = var.nacl_name
-  },
-  var.nacl_name,
-  var.tags
+    },
+    var.nacl_name,
+    var.tags
   )
 }
 
