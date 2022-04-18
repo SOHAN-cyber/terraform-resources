@@ -47,3 +47,8 @@ output "subnet_name" {
   description = "Subnet Name"
   value       = aws_subnet.subnet.*.tags_all
 }
+
+output "public_route_table_subnet" {
+  description = "Public route table subnet ID"
+  value = aws_route_table_association.public_route_table_association1.*.subnet_id
+}
