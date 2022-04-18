@@ -1,21 +1,23 @@
 variable "vpc_name" {
   description = "vpc-name"
-  type = map
+  type = map(string)
   default = {
     "Name" = "ot247-vpc"
   }
 }
 
 variable "flow_logs" {
-  type = bool
-  default = false
+  type = map
+  default = {
+    Name = "ot247-vpcflowlogs"
+    }
 }
 
 variable "subnet_tag" {
   description = "subnet tags"
   type = map
   default = {
-    Name = "ot247-subnet"
+    Subnet = "ot247-subnet"
     }
 }
 
@@ -39,36 +41,24 @@ variable "nat_gate_name" {
 
 variable "vpc_eip" {
   description = "EIP Name"
-  type = string
-  default = "ot247-eip"
-}
-
-variable "private_subnet_tag" {
-  description = "Tag for subnet"
-  type = map
+  type = map(string)
   default = {
-    "Name" = "ot247-private-rt1"
-  }
+    Name = "ot247-eip"
+}
 }
 
 variable "sg1_name" {
   description = "SG1"
   type = map
   default = {
-    "Name" = "SG1-OT247"
+    "Name" = "OT247-SG"
   }
-}
-
-variable "var_subnet_id_nat" {
-  description = "Subnet in which you want to create nat gateway"
-  type = number
-  default = 1
 }
 
 variable "enable_vpc_flow_logs" {
   description = "Do you want to enable vpc flow logs"
   type = bool
-  default = false
+  default = true
 }
 
 variable "nat_gateway_subnet" {
@@ -82,13 +72,7 @@ variable "igw_name" {
   type = string
   default = "ot247-igw"
 }
-variable "public_subnet_tag" {
-  description = "Tag for subnet"
-  type = map
-  default = {
-    "Name" = "ot247-private-rt1"
-  }
-}
+
 
 variable "port_number" {
   description = "Port range you want to open"
@@ -100,7 +84,7 @@ variable "tags" {
   description = "Name of the tag"
   type = map
   default = {
-    "Name" = "ot247"
+    "Owner" = "ot247"
   }
 }
 
@@ -194,34 +178,24 @@ variable "private_subnet_name" {
   default = "private"
 }
 
-variable "public_subnet_name" {
-  description = "cidr value for subnets"
-  type = string
-  default = "public"
-}
-
 variable "route_cidr" {
   description = "CIDR for routetable"
   type = string
   default = "0.0.0.0/0"
 }
 
-variable "public_subnet_cidr" {
-  description = "Public subnet cidr"
-  type = list(string)
-  default = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
-}
-
-variable "private_subnet_cidr" {
-  description = "Private subnet cidr"
-  type = list(string)
-  default = ["10.0.4.0/24", "10.0.5.0/24", "10.0.6.0/24"]
-}
-
 variable "description" {
   description = "Description for SG"
   type = string
   default = "Creating SG1"
+}
+
+variable "nacl_name" {
+  description = "NACL NAME"
+  type = map
+  default = {
+  Name = "ot247-nacl"
+  }
 }
 
 variable "ingress_port_range" {
@@ -255,6 +229,22 @@ variable "nacl_egress_to_port" {
   description = "The to port to match rule in NACl egress"
   type        = list(number)
   default     = [80, 443, 22]
+}
+
+variable "public_subnet_tag" {
+  description = "Public Subnet Tag"
+  type = map(string)
+  default = {
+    "Name" = "ot247-public-rt"
+  }
+}
+
+variable "private_subnet_tag" {
+  description = "Public Subnet Tag"
+  type = map(string)
+  default = {
+    "Name" = "ot247-private-rt"
+  }
 }
 
 variable "nacl_ingress_rule_no" {
@@ -344,7 +334,7 @@ variable "sg2_name" {
   description = "Security group 2"
   type = map
   default = {
-    "Name" = "SSH-SG"
+    "Name" = "OT247-SSH-SG"
   }
 }
 

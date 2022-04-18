@@ -39,6 +39,7 @@ resource "aws_security_group" "SG3" {
   tags = merge ({
     Name = var.sg1_name
   },
+  var.sg1_name,
   var.tags
   )
 }
@@ -73,6 +74,7 @@ resource "aws_security_group" "SG2" {
   tags = merge ({
     Name = var.sg2_name
   },
+  var.sg2_name,
   var.tags
   )
 }

@@ -42,3 +42,8 @@ output "private-rt" {
   description = "Attached private subnet"
   value = aws_route_table.private-route1.id
 }
+
+output "subnet_name" {
+  description = "Subnet Name"
+  value = aws_subnet.subnet.*.tags_all
+}
