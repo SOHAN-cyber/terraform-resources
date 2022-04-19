@@ -8,8 +8,7 @@ resource "aws_vpc" "main" {
   tags = merge(
     { "Name" = var.vpc_name
     },
-    var.vpc_name,
-    var.tags
+     var.tag
   )
 }
 
@@ -27,6 +26,6 @@ resource "aws_flow_log" "main" {
     "Name" = var.flow_logs
     },
     var.flow_logs,
-    var.tags
+    var.tag
   )
 }

@@ -1,5 +1,5 @@
 resource "aws_network_acl" "my_acl" {
-  vpc_id = aws_vpc.main.id
+  vpc_id = var.vpcid
 
   tags = merge({
     Name = var.nacl_name

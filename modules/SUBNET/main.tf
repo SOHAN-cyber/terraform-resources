@@ -1,5 +1,5 @@
 resource "aws_subnet" "subnet" {
-  vpc_id                  = aws_vpc.main.id
+  vpc_id                  = var.vpcid
   count                   = length(var.subnet_cidr)
   cidr_block              = element(var.subnet_cidr, count.index % length(var.subnet_cidr))
   availability_zone       = element(var.AZs, count.index % length(var.AZs))
@@ -8,7 +8,7 @@ resource "aws_subnet" "subnet" {
   tags = merge({
     Name = format("%s-%d", var.name, count.index + 1)
     },
-    var.tags,
-    var.subnet_tag
+    var.subnet_tag,
+    var.tags
   )
 }

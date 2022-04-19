@@ -13,7 +13,7 @@ locals {
 resource "aws_security_group" "SG3" {
   name        = "SG1"
   description = "This is security group 1"
-  vpc_id      = aws_vpc.main.id
+  vpc_id      = var.vpcid
 
   dynamic "ingress" {
     for_each = local.ports
@@ -48,7 +48,7 @@ resource "aws_security_group" "SG3" {
 resource "aws_security_group" "SG2" {
   name        = "SG2"
   description = "This is security group 1"
-  vpc_id      = aws_vpc.main.id
+  vpc_id      = var.vpcid
 
   dynamic "ingress" {
     for_each = local.ips
